@@ -1,0 +1,52 @@
+#file: ./init
+
+// Gamestate bools
+bool gameIsRunning = false
+bool sessionIsRunning = false
+
+// Create teams
+/team add Green "+16 Hours"
+/team modify Green color green
+
+/team add Yellow  "+8 Hours"
+/team modify Yellow color yellow
+
+/team add Red "+0 Hours"
+/team modify Red color red
+
+/team add Grey "Dead"
+/team modify Grey color gray
+
+// Enable triggers for player running init
+/scoreboard players enable @s Start
+/scoreboard players enable @s RollBoogey
+/scoreboard players enable @s EndBoogey
+/scoreboard players enable @s ToggleSession
+
+//Set upper and lower bounds of timer seconds and minutes
+/scoreboard players set Min Seconds 0
+/scoreboard players set Min Minutes 0
+
+/scoreboard players set Max Seconds 59
+/scoreboard players set Max Minutes 59
+
+//Set team color cuttoffs
+/scoreboard players set Green Hours 15
+/scoreboard players set Yellow Hours 7
+/scoreboard players set Red Seconds 1
+
+/scoreboard players set Green2 Hours 16
+/scoreboard players set Yellow2 Hours 8
+
+/scoreboard players set Dead Hours 0
+
+//TBD
+/scoreboard objectives add Killed playerKillCount
+/scoreboard objectives add Died deathCount
+
+/scoreboard objectives add CureBoogey trigger
+
+/tag @s add Host
+
+/tellraw @s [{"text": "Datapack set up succesfully!","color": "green"}]
+/schedule function limitedlifebetter:timer 1s append

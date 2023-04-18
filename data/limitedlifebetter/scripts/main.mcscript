@@ -1,0 +1,49 @@
+
+#file: ./main
+// here goes your main content
+// executes 20 times a second
+// log($(gameIsRunning))
+
+if('entity @e[tag=mcscriptTags,tag=gameIsRunning] if entity @e[tag=mcscriptTags,tag=sessionIsRunning]'){
+    // Check if RoolBoogey flag was set, if it is, roll
+    as(@a){
+        if(RollBoogey @s == 1){
+            run: schedule function limitedlife:boogeyman/roll/1minute 1t append
+        }
+    }
+    run: scoreboard players set @a RollBoogey 0
+
+    // If boogey failed flag set
+    as(@a){
+        if(EndBoogey @s == 1){
+            run: schedule function limitedlife:boogeyman/end/failboogey 1t append
+            run: tellraw @a [{"text": "The boogeymen have been failed...","color": "red"}]
+        }
+    }
+    run: scoreboard players set @a EndBoogey 0
+
+    // Check if boogeyman got a killed, then cure
+    if('entity @a[tag=Boogeyman,scores={Killed=1}]' && 'entity @a[team=!Red,scores={Died=1}]'){
+        run: function limitedlife:boogeyman/end/cureboogey
+    }
+
+    as(@a) {
+        if('score @s Died matches 1'){
+            run: scoreboard players remove @s Hours 1
+            run: title @a[scores={Died=1}] title [{"text": "-1 hour","color": "red"}]
+        }
+        if('score @s Killed matches 1'){
+            run: scoreboard players add @s Minutes 30
+            run: title @s[scores={Killed=1}] title [{"text": "+30 minutes","color": "green"}]
+        }
+    }
+
+    // Clear kill count of each player
+    /scoreboard players set @a Killed 0
+    /scoreboard players set @a Died 0
+}
+
+// Grant trigger permissions to players with host tag
+/scoreboard players enable @a[tag=Host] RollBoogey
+/scoreboard players enable @a[tag=Host] EndBoogey
+/scoreboard players enable @a[tag=Host] Start

@@ -1,0 +1,7 @@
+/scoreboard players set @a Hours 24
+/scoreboard players set @a Minutes 0
+/scoreboard players set @a Seconds 0
+/title @a title [{"text": "The time is ticking","color": "green"}]
+/tellraw @a [{"text": "The time is ticking...","color": "green"}]
+
+/schedule function limitedlifebetter:start_game 1t append 

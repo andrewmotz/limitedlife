@@ -1,0 +1,5 @@
+#file: ./load
+
+// here goes your load content
+log("limitedlifebetter:settings loaded!")
+/tellraw @a ["",{"text":"Configure Settings: ","color":"green"},{"text":"[HERE] ","color":"red","clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:settings"}}]
