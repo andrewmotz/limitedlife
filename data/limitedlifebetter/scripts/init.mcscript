@@ -3,6 +3,7 @@
 // Gamestate bools
 bool gameIsRunning = false
 bool sessionIsRunning = false
+bool timerRunning = false
 
 // Create teams
 /team add Green "+16 Hours"
@@ -17,10 +18,22 @@ bool sessionIsRunning = false
 /team add Grey "Dead"
 /team modify Grey color gray
 
+// Add Values to scoreboard
+/scoreboard objectives add Hours dummy
+/scoreboard objectives add Minutes dummy
+/scoreboard objectives add Seconds dummy
+
+// Add triggers to scoreboard
+/scoreboard objectives add Start trigger 
+/scoreboard objectives add RollImposter trigger
+/scoreboard objectives add EndImposter trigger
+/scoreboard objectives add ToggleSession trigger
+
+
 // Enable triggers for player running init
 /scoreboard players enable @s Start
-/scoreboard players enable @s RollBoogey
-/scoreboard players enable @s EndBoogey
+/scoreboard players enable @s RollImposter
+/scoreboard players enable @s EndImposter
 /scoreboard players enable @s ToggleSession
 
 //Set upper and lower bounds of timer seconds and minutes
@@ -44,9 +57,17 @@ bool sessionIsRunning = false
 /scoreboard objectives add Killed playerKillCount
 /scoreboard objectives add Died deathCount
 
-/scoreboard objectives add CureBoogey trigger
+/scoreboard objectives add CureImposter trigger
 
 /tag @s add Host
 
+/scoreboard players set @a Hours 24
+/scoreboard players set @a Minutes 0
+/scoreboard players set @a Seconds 0
+
 /tellraw @s [{"text": "Datapack set up succesfully!","color": "green"}]
-/schedule function limitedlifebetter:timer 1s append
+
+if(!'entity @e[tag=mcscriptTags,tag=timerRunning]'){
+    /schedule function limitedlifebetter:timer 1s append
+    /say starting timer from init
+}

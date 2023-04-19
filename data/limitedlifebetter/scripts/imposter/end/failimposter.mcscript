@@ -1,0 +1,11 @@
+/title @a[tag=imposter] title [{"text": "You have failed...","color": "red"}]
+/execute as @a[tag=imposter] if entity @s[team=Green,tag=imposter] run scoreboard players set @s Hours 16
+/execute as @a[tag=imposter] if entity @s[team=Green,tag=imposter] run scoreboard players set @s Minutes 0
+/execute as @a[tag=imposter] if entity @s[team=Green,tag=imposter] run scoreboard players set @s Seconds 0
+
+/execute as @a[tag=imposter] if entity @s[team=Yellow,tag=imposter] run scoreboard players set @s Hours 8
+/execute as @a[tag=imposter] if entity @s[team=Yellow,tag=imposter] run scoreboard players set @s Minutes 0
+/execute as @a[tag=imposter] if entity @s[team=Yellow,tag=imposter] run scoreboard players set @s Seconds 0
+
+/tag @a remove imposter
+

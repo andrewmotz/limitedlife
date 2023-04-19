@@ -2,29 +2,30 @@
 #file: ./main
 // here goes your main content
 // executes 20 times a second
-// log($(gameIsRunning))
 
 if('entity @e[tag=mcscriptTags,tag=gameIsRunning] if entity @e[tag=mcscriptTags,tag=sessionIsRunning]'){
-    // Check if RoolBoogey flag was set, if it is, roll
+    // Check if RollImposter flag was set, if it is, roll
     as(@a){
-        if(RollBoogey @s == 1){
-            run: schedule function limitedlife:boogeyman/roll/1minute 1t append
+        if(RollImposter @s == 1){
+            /say tried to roll imposter
+            run: schedule function limitedlifebetter:imposter/roll/1minute 1t append
+            run: tellraw @a[tag=host] [{"text": "Rolling imposter","color": "red"}]
         }
     }
-    run: scoreboard players set @a RollBoogey 0
+    run: scoreboard players set @a RollImposter 0
 
-    // If boogey failed flag set
+    // If Imposter failed flag set
     as(@a){
-        if(EndBoogey @s == 1){
-            run: schedule function limitedlife:boogeyman/end/failboogey 1t append
-            run: tellraw @a [{"text": "The boogeymen have been failed...","color": "red"}]
+        if(EndImposter @s == 1){
+            run: schedule function limitedlifebetter:imposter/end/failimposter 1t append
+            run: tellraw @a [{"text": "The Imposter have been failed...","color": "red"}]
         }
     }
-    run: scoreboard players set @a EndBoogey 0
+    run: scoreboard players set @a EndImposter 0
 
-    // Check if boogeyman got a killed, then cure
-    if('entity @a[tag=Boogeyman,scores={Killed=1}]' && 'entity @a[team=!Red,scores={Died=1}]'){
-        run: function limitedlife:boogeyman/end/cureboogey
+    // Check if Imposter got a killed, then cure
+    if('entity @a[tag=Imposter,scores={Killed=1}]' && 'entity @a[team=!Red,scores={Died=1}]'){
+        run: function limitedlifebetter:imposter/end/cureimposter
     }
 
     as(@a) {
@@ -44,6 +45,6 @@ if('entity @e[tag=mcscriptTags,tag=gameIsRunning] if entity @e[tag=mcscriptTags,
 }
 
 // Grant trigger permissions to players with host tag
-/scoreboard players enable @a[tag=Host] RollBoogey
-/scoreboard players enable @a[tag=Host] EndBoogey
+/scoreboard players enable @a[tag=Host] RollImposter
+/scoreboard players enable @a[tag=Host] EndImposter
 /scoreboard players enable @a[tag=Host] Start

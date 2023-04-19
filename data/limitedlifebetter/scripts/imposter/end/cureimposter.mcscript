@@ -1,0 +1,9 @@
+/title @a[tag=imposter,scores={Killed=1}] title [{"text": "You are cured!","color": "green"}]
+/execute as @a[scores={Killed=1}] run scoreboard players set @s Killed 2
+/execute as @a[scores={Died=1}] run scoreboard players set @s Died 2
+/scoreboard players add @a[tag=imposter,scores={Killed=2}] Hours 1
+/scoreboard players remove @a[scores={Died=2}] Hours 2
+/execute as @a if score @s Died matches 2 run title @a[scores={Dead=2}] title [{"text": "-2 hours","color": "red"}]
+/execute as @a if score @s Killed matches 2 run title @s[scores={Killed=2}] title [{"text": "+1 hour","color": "green"}]
+/tellraw @a [{"text": "IMPOSTER KILL","color": "red","bold": true}]
+/tag @a[tag=imposter,scores={Killed=2}] remove imposter

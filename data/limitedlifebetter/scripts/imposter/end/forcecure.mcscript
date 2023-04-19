@@ -1,0 +1,2 @@
+/title @a[tag=imposter] title [{"text": "You are cured!","color": "green"}]
+/tag @a remove imposter

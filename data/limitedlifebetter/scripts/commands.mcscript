@@ -6,14 +6,21 @@ run function menu {
     // Game status
     if('entity @e[tag=mcscriptTags,tag=gameIsRunning]'){
        /tellraw @s ["",{"text":"Game is: ","color":"gold"},{"text": "Running", "bold":true}]
+       /tellraw @s ["",{"text":"Stop game: ","color":"gold"}, {"text": "[HERE]", "bold":true,"clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:stop_game"}}]
     } else {
         /tellraw @s ["",{"text":"Game is: ","color":"gold"}, {"text": "Not Running", "bold":true}]
+        /tellraw @s ["",{"text":"Start game: ","color":"gold"}, {"text": "[HERE]", "bold":true,"clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:start_game"}}]
     }
+    /tellraw @s ""
+
     // Session status
     if('entity @e[tag=mcscriptTags,tag=sessionIsRunning]'){
         /tellraw @s ["",{"text":"Session is: ","color":"gold"},{"text": "Running", "bold":true}]
+        /tellraw @s ["",{"text":"Stop session: ","color":"gold"}, {"text": "[HERE]", "bold":true,"clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:stop_session"}}]
     } else {
         /tellraw @s ["",{"text":"Session is: ","color":"gold"}, {"text": "Not Running", "bold":true}]
+        /tellraw @s ["",{"text":"Start session: ","color":"gold"}, {"text": "[HERE]", "bold":true,"clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:start_session"}}]
+
     }
     /tellraw @s ""
 }
@@ -22,10 +29,11 @@ run function settings {
     /tellraw @s ""
     /tellraw @s {"text":"** Limited Life Settings ***","bold":true,"color":"blue"}
     /tellraw @s ""
-
     /tellraw @s ["",{"text":"Select a worldborder size: ","color":"light_purple"},{"text":"[200] ","bold":true,"color":"blue","clickEvent":{"action":"run_command","value":"/worldborder set 200"}},{"text":"[400] ","bold":true,"color":"blue","clickEvent":{"action":"run_command","value":"/worldborder set 400"}},{"text":"[600] ","bold":true,"color":"blue","clickEvent":{"action":"run_command","value":"/worldborder set 600"}},{"text":"[800] ","bold":true,"color":"blue","clickEvent":{"action":"run_command","value":"/worldborder set 800"}},{"text":"[1000] ","bold":true,"color":"blue","clickEvent":{"action":"run_command","value":"/worldborder set 1000"}},{"text":"Click on a size to get the live change.","color":"light_purple"}]
     /tellraw @s ["",{"text":"Select a game time: ","color":"gold"},{"text":"[12]","color":"gold","clickEvent":{"action":"run_command","value":"/scoreboard players set time gametime 12"}},{"text":"[24]","color":"gold","clickEvent":{"action":"run_command","value":"/scoreboard players set time gametime 24"},"hoverEvent":{"action":"show_text","contents":[{"text":"[STANDARD]","bold":true}]}},{"text":"[36]","color":"gold","clickEvent":{"action":"run_command","value":"/scoreboard players set time gametime 36"}},{"text":"[48]","color":"gold","clickEvent":{"action":"run_command","value":"/scoreboard players set time gametime 48"}}]
     /tellraw @s ["",{"text":"Select a session time: ","color":"dark_aqua"},{"text":"[1] ","color":"dark_aqua","clickEvent":{"action":"run_command","value":"/scoreboard players set time sessiontime 1"}},{"text":"[2] ","color":"dark_aqua","clickEvent":{"action":"run_command","value":"/scoreboard players set time sessiontime 2"}},{"text":"[3] ","color":"dark_aqua","clickEvent":{"action":"run_command","value":"/scoreboard players set time sessiontime 3"},"hoverEvent":{"action":"show_text","contents":["[STANDARD]"]}},{"text":"[4] ","color":"dark_aqua","clickEvent":{"action":"run_command","value":"/scoreboard players set time sessiontime 4"}},{"text":"[5] ","color":"dark_aqua","clickEvent":{"action":"run_command","value":"/scoreboard players set time sessiontime 5"}},{"text":"[6] ","color":"dark_aqua","clickEvent":{"action":"run_command","value":"/scoreboard players set time sessiontime 6"}},{"text":"(in hours)","color":"dark_aqua"}]
+    /tellraw @s ""
+    /tellraw @s ["",{"text":"Once you are done, run the intialization function","color":"green"},{"text":" [HERE] ","color":"red","clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:init"}}]
     /tellraw @s ""
 }
 
@@ -63,3 +71,6 @@ run function stop_session {
     /tellraw @s ["",{"text":"Session is now paused","color":"gold"}]
 }
 
+run function stop_timer_loop {
+    timerRunning = false
+}
