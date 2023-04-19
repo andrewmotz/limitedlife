@@ -4,4 +4,5 @@
 /title @a title [{"text": "The time is ticking","color": "green"}]
 /tellraw @a [{"text": "The time is ticking...","color": "green"}]
 
-/schedule function limitedlifebetter:start_game 1t append 
+/schedule function limitedlifebetter:start_game 1t append
+/schedule function limitedlifebetter:start_session 1t append

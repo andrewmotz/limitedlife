@@ -1,4 +1,5 @@
 /title @a[tag=imposter,scores={Killed=1}] title [{"text": "You are cured!","color": "green"}]
+/execute as @a[tag=imposter,scores={Killed=1}] run playsound minecraft:entity.player.levelup player @p
 /execute as @a[scores={Killed=1}] run scoreboard players set @s Killed 2
 /execute as @a[scores={Died=1}] run scoreboard players set @s Died 2
 /scoreboard players add @a[tag=imposter,scores={Killed=2}] Hours 1

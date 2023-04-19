@@ -18,7 +18,7 @@ if('entity @e[tag=mcscriptTags,tag=gameIsRunning] if entity @e[tag=mcscriptTags,
     as(@a){
         if(EndImposter @s == 1){
             run: schedule function limitedlifebetter:imposter/end/failimposter 1t append
-            run: tellraw @a [{"text": "The Imposter have been failed...","color": "red"}]
+            run: tellraw @a [{"text": "The Imposters have failed...","color": "red"}]
         }
     }
     run: scoreboard players set @a EndImposter 0
@@ -43,6 +43,15 @@ if('entity @e[tag=mcscriptTags,tag=gameIsRunning] if entity @e[tag=mcscriptTags,
     /scoreboard players set @a Killed 0
     /scoreboard players set @a Died 0
 }
+
+// Check start trigger ran
+as(@a){
+    if (Start @s == 1) {
+        /say ran trigger
+        run: schedule function limitedlifebetter:start/start1 1t append
+    }
+}
+/scoreboard players set @a Start 0
 
 // Grant trigger permissions to players with host tag
 /scoreboard players enable @a[tag=Host] RollImposter

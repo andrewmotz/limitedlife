@@ -8,4 +8,3 @@
 /execute as @a[tag=imposter] if entity @s[team=Yellow,tag=imposter] run scoreboard players set @s Seconds 0
 
 /tag @a remove imposter
-

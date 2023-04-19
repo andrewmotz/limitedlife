@@ -1,6 +1,6 @@
 #file: ./timer
 
-timerRunning = true
+bool timerRunning = true
 
 if('entity @e[tag=mcscriptTags,tag=gameIsRunning] if entity @e[tag=mcscriptTags,tag=sessionIsRunning]'){
     /execute as @a[team=!Grey] run scoreboard players remove @s Seconds 1

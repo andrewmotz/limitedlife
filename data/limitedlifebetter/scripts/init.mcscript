@@ -3,7 +3,6 @@
 // Gamestate bools
 bool gameIsRunning = false
 bool sessionIsRunning = false
-bool timerRunning = false
 
 // Create teams
 /team add Green "+16 Hours"
@@ -67,7 +66,7 @@ bool timerRunning = false
 
 /tellraw @s [{"text": "Datapack set up succesfully!","color": "green"}]
 
-if(!'entity @e[tag=mcscriptTags,tag=timerRunning]'){
+unless('entity @e[tag=mcscriptTags,tag=timerRunning]'){
     /schedule function limitedlifebetter:timer 1s append
     /say starting timer from init
 }
