@@ -1,4 +1,6 @@
 /title @a[tag=imposter] title [{"text": "The Imposter...","color": "red"}]
+/execute at @a[tag=imposter] run playsound limitedlife:limitedlife.sound.imposter player @a[tag=imposter]
 /title @a[tag=!imposter] title [{"text": "NOT the Imposter","color": "green"}]
+/execute at @a[tag=!imposter] run playsound limitedlife:limitedlife.sound.noice player @a[tag=!imposter]
 /scoreboard players enable @s RollImposter
 /tellraw @a[tag=imposter] ["",{"text":"You are the ","color":"gray"},{"text":"Imposter","color":"red"},{"text":".\nYou must secure a kill to a ","color":"gray"},{"text":"non-red","color":"red"},{"text":" person before the end of the session or you will downgrade ","color":"gray"},{"text":"one color","color":"gold"}]

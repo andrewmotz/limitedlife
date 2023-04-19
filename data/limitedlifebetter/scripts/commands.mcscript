@@ -6,22 +6,23 @@ run function menu {
     // Game status
     if('entity @e[tag=mcscriptTags,tag=gameIsRunning]'){
        /tellraw @s ["",{"text":"Game is: ","color":"gold"},{"text": "Running", "bold":true}]
-       /tellraw @s ["",{"text":"Stop game: ","color":"gold"}, {"text": "[HERE]", "bold":true,"clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:stop_game"}}]
+       /tellraw @s ["",{"text":"Stop game: ","color":"gold"}, {"text": "[HERE]","color":"red", "bold":true,"clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:stop_game"}}]
     } else {
         /tellraw @s ["",{"text":"Game is: ","color":"gold"}, {"text": "Not Running", "bold":true}]
-        /tellraw @s ["",{"text":"Start game: ","color":"gold"}, {"text": "[HERE]", "bold":true,"clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:start_game"}}]
+        /tellraw @s ["",{"text":"Start game: ","color":"gold"}, {"text": "[HERE]","color":"green", "bold":true,"clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:start_game"}}]
     }
     /tellraw @s ""
 
     // Session status
     if('entity @e[tag=mcscriptTags,tag=sessionIsRunning]'){
         /tellraw @s ["",{"text":"Session is: ","color":"gold"},{"text": "Running", "bold":true}]
-        /tellraw @s ["",{"text":"Stop session: ","color":"gold"}, {"text": "[HERE]", "bold":true,"clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:stop_session"}}]
+        /tellraw @s ["",{"text":"Stop session: ","color":"gold"}, {"text": "[HERE]","color":"red", "bold":true,"clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:stop_session"}}]
     } else {
         /tellraw @s ["",{"text":"Session is: ","color":"gold"}, {"text": "Not Running", "bold":true}]
-        /tellraw @s ["",{"text":"Start session: ","color":"gold"}, {"text": "[HERE]", "bold":true,"clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:start_session"}}]
+        /tellraw @s ["",{"text":"Start session: ","color":"gold"}, {"text": "[HERE]","color":"green", "bold":true,"clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:start_session"}}]
 
     }
+    /tellraw @s {"text":"** Limited Life Menu ***","bold":true,"color":"blue"}
     /tellraw @s ""
 }
 
@@ -34,6 +35,8 @@ run function settings {
     /tellraw @s ["",{"text":"Select a session time: ","color":"dark_aqua"},{"text":"[1] ","color":"dark_aqua","clickEvent":{"action":"run_command","value":"/scoreboard players set time sessiontime 1"}},{"text":"[2] ","color":"dark_aqua","clickEvent":{"action":"run_command","value":"/scoreboard players set time sessiontime 2"}},{"text":"[3] ","color":"dark_aqua","clickEvent":{"action":"run_command","value":"/scoreboard players set time sessiontime 3"},"hoverEvent":{"action":"show_text","contents":["[STANDARD]"]}},{"text":"[4] ","color":"dark_aqua","clickEvent":{"action":"run_command","value":"/scoreboard players set time sessiontime 4"}},{"text":"[5] ","color":"dark_aqua","clickEvent":{"action":"run_command","value":"/scoreboard players set time sessiontime 5"}},{"text":"[6] ","color":"dark_aqua","clickEvent":{"action":"run_command","value":"/scoreboard players set time sessiontime 6"}},{"text":"(in hours)","color":"dark_aqua"}]
     /tellraw @s ""
     /tellraw @s ["",{"text":"Once you are done, run the intialization function","color":"green"},{"text":" [HERE] ","color":"red","clickEvent":{"action":"run_command","value":"/execute run function limitedlifebetter:init"}}]
+    /tellraw @s ""
+    /tellraw @s {"text":"** Limited Life Settings ***","bold":true,"color":"blue"}
     /tellraw @s ""
 }
 
